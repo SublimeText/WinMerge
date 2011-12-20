@@ -1,8 +1,15 @@
 import sublime, sublime_plugin
 import os
 from subprocess import Popen
+import _winreg
 
-WINMERGE = '"%s\WinMerge\WinMergeU.exe"' % os.environ['ProgramFiles']
+WINMERGE = _winreg.QueryValue(_winreg.HKEY_LOCAL_MACHINE, 'SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\WinMergeU.exe')
+
+if not WINMERGE:
+	if os.path.exists("%s\WinMerge\WinMergeU.exe" % os.environ['ProgramFiles(x86)']):
+		WINMERGE = '"%s\WinMerge\WinMergeU.exe"' % os.environ['ProgramFiles(x86)']
+	else:
+		WINMERGE = '"%s\WinMerge\WinMergeU.exe"' % os.environ['ProgramFiles']
 
 fileA = fileB = None
 
