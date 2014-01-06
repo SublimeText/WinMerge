@@ -1,0 +1,24 @@
+[
+{
+    "caption": "Edit",
+    "mnemonic": "E",
+    "id": "edit",
+    "children":
+    [
+
+      {
+        "caption": "WinMerge",
+        "id": "winmerge",
+        "children":
+        [
+					{"caption":"-"},
+					{
+						"command": "win_merge",
+						"id":"winmerge-win-merge",
+						"caption":"WinMerge: Show Diff"
+					}
+        ]
+      }
+    ]
+}
+]
